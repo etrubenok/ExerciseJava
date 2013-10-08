@@ -105,4 +105,111 @@ public class ListExerciseTest {
 
 
     }
+
+    @Test
+    public void testGetListSize() throws Exception {
+        head = new LinkedListNode(1).addNode(new LinkedListNode(2)).addNode(new LinkedListNode(3)).addNode(new LinkedListNode(4)).addNode(new LinkedListNode(5));
+        head.addNode(new LinkedListNode(6)).addNode(new LinkedListNode(7)).addNode(new LinkedListNode(8)).addNode(new LinkedListNode(9));
+
+        int size = exerciseObj.getListSize(head);
+        assert(size == 9);
+    }
+
+    @Test
+    public void testFindNthNodeFromTail() throws Exception {
+        head = new LinkedListNode(1).addNode(new LinkedListNode(2)).addNode(new LinkedListNode(3)).addNode(new LinkedListNode(4)).addNode(new LinkedListNode(5));
+        head.addNode(new LinkedListNode(6)).addNode(new LinkedListNode(7)).addNode(new LinkedListNode(8)).addNode(new LinkedListNode(9));
+
+        LinkedListNode nthNode = exerciseObj.findNthNodeFromTail(head, 5);
+        assert(nthNode.getValue() == 4);
+    }
+
+    @Test
+         public void testFindNthNodeFromTail2() throws Exception {
+        head = new LinkedListNode(1).addNode(new LinkedListNode(2)).addNode(new LinkedListNode(3)).addNode(new LinkedListNode(4)).addNode(new LinkedListNode(5));
+        head.addNode(new LinkedListNode(6)).addNode(new LinkedListNode(7)).addNode(new LinkedListNode(8)).addNode(new LinkedListNode(9));
+
+        LinkedListNode nthNode = exerciseObj.findNthNodeFromTail(head, 8);
+        assert(nthNode.getValue() == 1);
+    }
+
+    @Test
+    public void testFindNthNodeFromTail3() throws Exception {
+        head = new LinkedListNode(1).addNode(new LinkedListNode(2)).addNode(new LinkedListNode(3)).addNode(new LinkedListNode(4)).addNode(new LinkedListNode(5));
+        head.addNode(new LinkedListNode(6)).addNode(new LinkedListNode(7)).addNode(new LinkedListNode(8)).addNode(new LinkedListNode(9));
+
+        LinkedListNode nthNode = exerciseObj.findNthNodeFromTail(head, 0);
+        assert(nthNode.getValue() == 9);
+    }
+
+    @Test
+    public void testFindNthNodeFromTail4() throws Exception {
+        head = new LinkedListNode(1).addNode(new LinkedListNode(2)).addNode(new LinkedListNode(3)).addNode(new LinkedListNode(4)).addNode(new LinkedListNode(5));
+        head.addNode(new LinkedListNode(6)).addNode(new LinkedListNode(7)).addNode(new LinkedListNode(8)).addNode(new LinkedListNode(9));
+
+        Throwable caught = null;
+        try {
+            LinkedListNode nthNode = exerciseObj.findNthNodeFromTail(head, -1);
+        } catch (Throwable e) {
+            caught = e;
+        }
+
+        assert(caught != null && caught.getClass() == IllegalArgumentException.class);
+    }
+
+    @Test
+    public void testFindNthNodeFromTail5() throws Exception {
+        head = new LinkedListNode(1).addNode(new LinkedListNode(2)).addNode(new LinkedListNode(3)).addNode(new LinkedListNode(4)).addNode(new LinkedListNode(5));
+        head.addNode(new LinkedListNode(6)).addNode(new LinkedListNode(7)).addNode(new LinkedListNode(8)).addNode(new LinkedListNode(9));
+
+        Throwable caught = null;
+        try {
+            LinkedListNode nthNode = exerciseObj.findNthNodeFromTail(head, 10);
+        } catch (Throwable e) {
+            caught = e;
+        }
+        assert(caught != null && caught.getClass() == IllegalArgumentException.class);
+    }
+
+    @Test
+    public void testFindNthNodeFromTail6() throws Exception {
+        head = new LinkedListNode(1);
+
+        Throwable caught = null;
+        try {
+            LinkedListNode nthNode = exerciseObj.findNthNodeFromTail(head, 1);
+        } catch (Throwable e) {
+            caught = e;
+        }
+        assert(caught != null && caught.getClass() == IllegalArgumentException.class);
+    }
+
+    @Test
+    public void testFindNthNodeFromTail7() throws Exception {
+        head = new LinkedListNode(1);
+
+        LinkedListNode nthNode = exerciseObj.findNthNodeFromTail(head, 0);
+        assert(nthNode.getValue() == 1);
+    }
+
+    @Test
+    public void testFindNthNodeFromTail8() throws Exception {
+        head = new LinkedListNode(1).addNode(new LinkedListNode(2));
+
+        LinkedListNode nthNode = exerciseObj.findNthNodeFromTail(head, 1);
+        assert(nthNode.getValue() == 1);
+    }
+
+    @Test
+    public void testFindNthNodeFromTail9() throws Exception {
+        head = new LinkedListNode(1).addNode(new LinkedListNode(2));
+
+        Throwable caught = null;
+        try {
+            LinkedListNode nthNode = exerciseObj.findNthNodeFromTail(head, 2);
+        } catch (Throwable e) {
+            caught = e;
+        }
+        assert(caught != null && caught.getClass() == IllegalArgumentException.class);
+    }
 } 
