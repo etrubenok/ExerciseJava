@@ -212,4 +212,80 @@ public class ListExerciseTest {
         }
         assert(caught != null && caught.getClass() == IllegalArgumentException.class);
     }
+
+    @Test
+    public void testDeleteMiddleNode() throws Exception {
+        head = new LinkedListNode(1).addNode(new LinkedListNode(2)).addNode(new LinkedListNode(3)).addNode(new LinkedListNode(4)).addNode(new LinkedListNode(5));
+        LinkedListNode middleNode = new LinkedListNode(6);
+        head.addNode(middleNode).addNode(new LinkedListNode(7)).addNode(new LinkedListNode(8)).addNode(new LinkedListNode(9));
+
+        exerciseObj.deleteMiddleNode(middleNode);
+
+        assert(head.getValue() == 1 &&
+                head.getNext().getValue() == 2 &&
+                head.getNext().getNext().getValue() == 3 &&
+                head.getNext().getNext().getNext().getValue() == 4 &&
+                head.getNext().getNext().getNext().getNext().getValue() == 5 &&
+                head.getNext().getNext().getNext().getNext().getNext().getValue() == 7 &&
+                head.getNext().getNext().getNext().getNext().getNext().getNext().getValue() == 8 &&
+                head.getNext().getNext().getNext().getNext().getNext().getNext().getNext().getValue() == 9 &&
+                head.getNext().getNext().getNext().getNext().getNext().getNext().getNext().getNext() == null);
+
+    }
+
+    @Test
+    public void testDeleteMiddleNode2() throws Exception {
+        head = new LinkedListNode(1).addNode(new LinkedListNode(2)).addNode(new LinkedListNode(3)).addNode(new LinkedListNode(4)).addNode(new LinkedListNode(5));
+        LinkedListNode middleNode = new LinkedListNode(9);
+        head.addNode(new LinkedListNode(6)).addNode(new LinkedListNode(7)).addNode(new LinkedListNode(8)).addNode(middleNode);
+
+        Throwable caught = null;
+        try {
+            exerciseObj.deleteMiddleNode(middleNode);
+        } catch (Throwable e) {
+            caught = e;
+        }
+        assert(caught != null && caught.getClass() == IllegalArgumentException.class);
+    }
+
+    @Test
+    public void testDeleteMiddleNode3() throws Exception {
+        head = new LinkedListNode(1).addNode(new LinkedListNode(2)).addNode(new LinkedListNode(3)).addNode(new LinkedListNode(4)).addNode(new LinkedListNode(5));
+        LinkedListNode middleNode = new LinkedListNode(8);
+        head.addNode(new LinkedListNode(6)).addNode(new LinkedListNode(7)).addNode(middleNode).addNode(new LinkedListNode(9));
+
+        exerciseObj.deleteMiddleNode(middleNode);
+
+        assert(head.getValue() == 1 &&
+                head.getNext().getValue() == 2 &&
+                head.getNext().getNext().getValue() == 3 &&
+                head.getNext().getNext().getNext().getValue() == 4 &&
+                head.getNext().getNext().getNext().getNext().getValue() == 5 &&
+                head.getNext().getNext().getNext().getNext().getNext().getValue() == 6 &&
+                head.getNext().getNext().getNext().getNext().getNext().getNext().getValue() == 7 &&
+                head.getNext().getNext().getNext().getNext().getNext().getNext().getNext().getValue() == 9 &&
+                head.getNext().getNext().getNext().getNext().getNext().getNext().getNext().getNext() == null);
+
+    }
+
+    @Test
+    public void testDeleteMiddleNode4() throws Exception {
+        LinkedListNode middleNode = new LinkedListNode(1);
+
+        head = middleNode.addNode(new LinkedListNode(2)).addNode(new LinkedListNode(3)).addNode(new LinkedListNode(4)).addNode(new LinkedListNode(5));
+        head.addNode(new LinkedListNode(6)).addNode(new LinkedListNode(7)).addNode(new LinkedListNode(8)).addNode(new LinkedListNode(9));
+
+        exerciseObj.deleteMiddleNode(middleNode);
+
+        assert(head.getValue() == 2 &&
+                head.getNext().getValue() == 3 &&
+                head.getNext().getNext().getValue() == 4 &&
+                head.getNext().getNext().getNext().getValue() == 5 &&
+                head.getNext().getNext().getNext().getNext().getValue() == 6 &&
+                head.getNext().getNext().getNext().getNext().getNext().getValue() == 7 &&
+                head.getNext().getNext().getNext().getNext().getNext().getNext().getValue() == 8 &&
+                head.getNext().getNext().getNext().getNext().getNext().getNext().getNext().getValue() == 9 &&
+                head.getNext().getNext().getNext().getNext().getNext().getNext().getNext().getNext() == null);
+
+    }
 } 

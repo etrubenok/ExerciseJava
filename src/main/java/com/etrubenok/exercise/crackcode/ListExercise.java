@@ -106,4 +106,16 @@ public class ListExercise {
 
         return currentNode2;
     }
+
+    public void deleteMiddleNode(LinkedListNode node) {
+
+        LinkedListNode currentNode = node;
+
+        if ( currentNode.getNext() == null ) {
+            throw new IllegalArgumentException("Node must not be the last node of the list");
+        }
+
+        currentNode.setValue(currentNode.getNext().getValue());
+        currentNode.setNext(currentNode.getNext().getNext());
+    }
 }

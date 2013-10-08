@@ -47,6 +47,10 @@ public class LinkedListNode {
         return this.next;
     }
 
+    public void setNext(LinkedListNode next) {
+        this.next = next;
+    }
+
     public Integer getValue() {
         return value;
     }
