@@ -29,13 +29,13 @@ public class MergeSort {
         for ( int k = p; k <= q; k++ ) {
             a1.add(a.get(k));
         }
-        a1.add(1000000);
+        a1.add(Integer.MAX_VALUE);
 
         ArrayList<Integer> a2 = new ArrayList<Integer>();
         for ( int k =  q+1; k <= r; k++ ) {
             a2.add(a.get(k));
         }
-        a2.add(1000000);
+        a2.add(Integer.MAX_VALUE);
 
         int i = 0;
         int j = 0;
