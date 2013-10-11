@@ -8,6 +8,30 @@ public class MaximumSubarrayFinder {
         return findInner(a, 0, a.size()-1);
     }
 
+    public static Subarray findViaIterations(ArrayList<Integer> a) {
+
+        Subarray r = new Subarray(a.get(0), 0, 0);
+
+        for ( int i = 1; i < a.size(); i++ ) {
+            int sum2 = 0;
+            int prevSum = a.get(i);
+            int leftIndex = i;
+            for ( int j = i; j >=r.leftIndex; j-- ) {
+                sum2 += a.get(j);
+                if ( sum2 > prevSum ) {
+                    prevSum = sum2;
+                    leftIndex = j;
+                }
+            }
+
+            if ( prevSum > r.sum ) {
+                r.sum = prevSum;
+                r.leftIndex = leftIndex;
+                r.rightIndex = i;
+            }
+        }
+        return r;
+    }
     private static Subarray findInner(ArrayList<Integer> a, int leftIndex, int rightIndex) {
 
         if ( leftIndex < rightIndex )
